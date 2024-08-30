@@ -1,1 +1,1 @@
-# dns-stack-docker-compose
+Docker compose based dns stack with pihole 
