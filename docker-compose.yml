@@ -11,6 +11,7 @@ services:
     environment:
       TZ: "${TZ}"
       WEBPASSWORD: "${DNS_STACK_PIHOLE_WEB_PASSWORD}"
+      PIHOLE_DNS_: "${DNS_STACK_PIHOLE_UPSTREAM_DNS_SERVERS}"
     volumes:
       - './appdata/etc-pihole:/etc/pihole'
       - './appdata/etc-dnsmasq.d:/etc/dnsmasq.d'
