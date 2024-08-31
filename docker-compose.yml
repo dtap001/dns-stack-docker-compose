@@ -21,4 +21,15 @@ services:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
     networks:
-     - ${TRAEFIK_PROXY_NETWORK}
+     - traefik-proxy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pihole.rule=Host(`${DNS_STACK_WEB_DOMAIN}`)"
+      - "traefik.http.routers.pihole.entrypoints=https"
+      - "traefik.http.routers.pihole.tls=true"
+      - "traefik.http.services.pihole.loadbalancer.server.port=80"
+
+networks:
+  traefik-proxy-network:
+    external: true
+      
